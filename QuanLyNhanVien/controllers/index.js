@@ -86,6 +86,7 @@ function xoaNhanVien(taiKhoan) {
     tableNhanVien(mangNhanVien);
 }
 
+
 //Chức năng cập nhật Nhân viên:
 document.querySelector('#btnCapNhat').onclick = function () {
     //Lấy dữ liệu từ người dùng nhập vào sau khi chỉnh sửa:
@@ -98,6 +99,14 @@ document.querySelector('#btnCapNhat').onclick = function () {
     nhanVienCapNhat.luongCB = document.querySelector('#luongCB').value;
     nhanVienCapNhat.chucVu = document.querySelector('#chucvu').value;
     nhanVienCapNhat.gioLamThang = document.querySelector('#gioLam').value;
+    // //Validation:
+    // var valid = true;
+    // //Kiểm tra định dạng Tài khoản, Họ tên,Email, Mật khẩu, Ngày làm, Lương cơ bản:
+    // valid &= kiemTraTaiKhoan(nv.taiKhoan,'#error_taiKhoan','Tài khoản',4,6) & kiemTraHoTen(nv.hoTen,'#error_hoTen','Họ và tên') & kiemTraEmail(nv.email,'#error_email','Email') & kiemTraMatKhau(nv.matKhau,'#error_matKhau','Mật khẩu',6,10) & kiemTraLuongCB(nv.luongCB,'#error_luongCB', 'Lương cơ bản',1000000,20000000) & kiemTraChucVu(nv.chucVu,'#error_chucVu','Chức vụ') & kiemTraGioLam(nv.gioLamThang,'#error_gioLam','Giờ làm',80,200) & kiemTraNgayLam(nv.ngayLam,'#error_ngayLam','Ngày làm');
+    // //kiểm tra:
+    // if(!!!valid){
+    //     return;
+    // };
     //Duyệt qua mảng tìm ra object nhân viên cần cập nhật:
     for (var index = 0; index < mangNhanVien.length; index++) {
         var nvMang = mangNhanVien[index];
@@ -108,9 +117,25 @@ document.querySelector('#btnCapNhat').onclick = function () {
             nvMang.ngayLam = nhanVienCapNhat.ngayLam;
             nvMang.luongCB = nhanVienCapNhat.luongCB;
             nvMang.gioLamThang = nhanVienCapNhat.gioLamThang;
-               //Validation:
             tableNhanVien(mangNhanVien);
             break;
         }
     }
 }
+
+//Tìm nhân viên theo loại và cập nhật:
+// function checkLoai (loai) {
+//     var mangTheoLoai = [];
+//     for(var index=0; index < mangNhanVien.length;index++){
+//         var nhanVien = mangNhanVien[index];
+//         if (nhanVien.loaiNV === loai){
+//             mangTheoLoai.push(nhanVien);
+//         }
+//     }
+// return mangTheoLoai;
+// }
+
+// document.querySelector('#').onclick = function () {
+    
+//     document.querySelector('#').innerHTML = mangNhanVien.filter(checkLoai);
+// }
