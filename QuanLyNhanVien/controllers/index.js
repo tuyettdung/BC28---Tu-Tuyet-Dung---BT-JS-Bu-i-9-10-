@@ -18,9 +18,9 @@ document.querySelector('#btnThemNV').onclick = function () {
     //Validation:
     var valid = true;
     //Kiểm tra định dạng Tài khoản, Họ tên,Email, Mật khẩu, Ngày làm, Lương cơ bản:
-    valid &= kiemTraTaiKhoan(nv.taiKhoan,'#error_taiKhoan','Tài khoản',4,6) & kiemTraHoTen(nv.hoTen,'#error_hoTen','Họ và tên') & kiemTraEmail(nv.email,'#error_email','Email') & kiemTraMatKhau(nv.matKhau,'#error_matKhau','Mật khẩu',6,10) & kiemTraLuongCB(nv.luongCB,'#error_luongCB', 'Lương cơ bản',1000000,20000000) & kiemTraChucVu(nv.chucVu,'#error_chucVu','Chức vụ') & kiemTraGioLam(nv.gioLamThang,'#error_gioLam','Giờ làm',80,200) & kiemTraNgayLam(nv.ngayLam,'#error_ngayLam','Ngày làm');
+    valid &= kiemTraTaiKhoan(nv.taiKhoan, '#error_taiKhoan', 'Tài khoản', 4, 6) & kiemTraHoTen(nv.hoTen, '#error_hoTen', 'Họ và tên') & kiemTraEmail(nv.email, '#error_email', 'Email') & kiemTraMatKhau(nv.matKhau, '#error_matKhau', 'Mật khẩu', 6, 10) & kiemTraLuongCB(nv.luongCB, '#error_luongCB', 'Lương cơ bản', 1000000, 20000000) & kiemTraChucVu(nv.chucVu, '#error_chucVu', 'Chức vụ') & kiemTraGioLam(nv.gioLamThang, '#error_gioLam', 'Giờ làm', 80, 200) & kiemTraNgayLam(nv.ngayLam, '#error_ngayLam', 'Ngày làm');
     //kiểm tra:
-    if(!!!valid){
+    if (!!!valid) {
         return;
     };
     //Thêm nv vào mảng nhân viên:
@@ -57,9 +57,9 @@ function tableNhanVien(arrNhanVien) {
 
 //Chức năng sửa nhân viên:
 function suaNhanVien(taiKhoanClick) {
-    for(var index=0; index < mangNhanVien.length; index++){
+    for (var index = 0; index < mangNhanVien.length; index++) {
         var nhanVien = mangNhanVien[index];
-        if(taiKhoanClick === nhanVien.taiKhoan){
+        if (taiKhoanClick === nhanVien.taiKhoan) {
             document.querySelector('#tknv').value = nhanVien.taiKhoan;
             document.querySelector('#name').value = nhanVien.hoTen;
             document.querySelector('#email').value = nhanVien.email;
@@ -75,9 +75,9 @@ function suaNhanVien(taiKhoanClick) {
 //Chức năng xóa Nhân viên:
 function xoaNhanVien(taiKhoan) {
     var viTriXoa = -1;
-    for (var index=0; index < mangNhanVien.length; index++){
+    for (var index = 0; index < mangNhanVien.length; index++) {
         var nhanVien = mangNhanVien[index];
-        if(nhanVien.taiKhoan === taiKhoan){
+        if (nhanVien.taiKhoan === taiKhoan) {
             viTriXoa = index;
             break;
         }
@@ -100,13 +100,13 @@ document.querySelector('#btnCapNhat').onclick = function () {
     nhanVienCapNhat.chucVu = document.querySelector('#chucvu').value;
     nhanVienCapNhat.gioLamThang = document.querySelector('#gioLam').value;
     // //Validation:
-    // var valid = true;
-    // //Kiểm tra định dạng Tài khoản, Họ tên,Email, Mật khẩu, Ngày làm, Lương cơ bản:
-    // valid &= kiemTraTaiKhoan(nv.taiKhoan,'#error_taiKhoan','Tài khoản',4,6) & kiemTraHoTen(nv.hoTen,'#error_hoTen','Họ và tên') & kiemTraEmail(nv.email,'#error_email','Email') & kiemTraMatKhau(nv.matKhau,'#error_matKhau','Mật khẩu',6,10) & kiemTraLuongCB(nv.luongCB,'#error_luongCB', 'Lương cơ bản',1000000,20000000) & kiemTraChucVu(nv.chucVu,'#error_chucVu','Chức vụ') & kiemTraGioLam(nv.gioLamThang,'#error_gioLam','Giờ làm',80,200) & kiemTraNgayLam(nv.ngayLam,'#error_ngayLam','Ngày làm');
-    // //kiểm tra:
-    // if(!!!valid){
-    //     return;
-    // };
+    var valid = true;
+    //Kiểm tra định dạng Tài khoản, Họ tên,Email, Mật khẩu, Ngày làm, Lương cơ bản:
+    valid &= kiemTraTaiKhoan(nhanVienCapNhat.taiKhoan,'#error_taiKhoan','Tài khoản',4,6) & kiemTraHoTen(nhanVienCapNhat.hoTen,'#error_hoTen','Họ và tên') & kiemTraEmail(nhanVienCapNhat.email,'#error_email','Email') & kiemTraMatKhau(nhanVienCapNhat.matKhau,'#error_matKhau','Mật khẩu',6,10) & kiemTraLuongCB(nhanVienCapNhat.luongCB,'#error_luongCB', 'Lương cơ bản',1000000,20000000) & kiemTraChucVu(nhanVienCapNhat.chucVu,'#error_chucVu','Chức vụ') & kiemTraGioLam(nhanVienCapNhat.gioLamThang,'#error_gioLam','Giờ làm',80,200) & kiemTraNgayLam(nhanVienCapNhat.ngayLam,'#error_ngayLam','Ngày làm');
+    //kiểm tra:
+    if(!!!valid){
+        return;
+    };
     //Duyệt qua mảng tìm ra object nhân viên cần cập nhật:
     for (var index = 0; index < mangNhanVien.length; index++) {
         var nvMang = mangNhanVien[index];
@@ -123,19 +123,5 @@ document.querySelector('#btnCapNhat').onclick = function () {
     }
 }
 
-//Tìm nhân viên theo loại và cập nhật:
-// function checkLoai (loai) {
-//     var mangTheoLoai = [];
-//     for(var index=0; index < mangNhanVien.length;index++){
-//         var nhanVien = mangNhanVien[index];
-//         if (nhanVien.loaiNV === loai){
-//             mangTheoLoai.push(nhanVien);
-//         }
-//     }
-// return mangTheoLoai;
-// }
 
-// document.querySelector('#').onclick = function () {
-    
-//     document.querySelector('#').innerHTML = mangNhanVien.filter(checkLoai);
-// }
+
